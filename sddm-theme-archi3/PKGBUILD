@@ -15,7 +15,7 @@ source=("git+https://github.com/Arch-i3/sddm-theme-archi3")
 md5sums=('SKIP')
 
 package() {
-	cd "${srcdir}/sddm-greenleaf"
+	cd "${srcdir}/sddm-theme-archi3"
 
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
