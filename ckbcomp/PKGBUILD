@@ -1,0 +1,39 @@
+# Maintainer: Nissar Chababy <funilrys at outlook dot com>
+# Ex-Maintainer: 	Jeroen Bollen <jbinero at gmail dot comau>
+
+pkgname=ckbcomp
+pkgver=1.234
+pkgrel=1
+pkgdesc="Compile a XKB keyboard description to a keymap suitable for loadkeys or kbdcontrol"
+arch=(any)
+url="http://anonscm.debian.org/cgit/d-i/console-setup.git/"
+license=('GPL2')
+depends=('perl')
+source=("https://salsa.debian.org/installer-team/console-setup/-/archive/$pkgver/console-setup-$pkgver.tar.gz")
+sha512sums=('6417a50c843a6028609386cbf6b53952d3826503d1cc6e2b92b60b142fac6b48e7b79e1cc8bb7559315746971e969758adf68346012d70a83e566ab150497dc3')
+conflicts=(ckbcomp-bin)
+
+package() {
+    if [[ -d "${srcdir}/console-setup" ]]
+    then
+        cd console-setup
+    elif [[ -d "${srcdir}/console-setup-${pkgver}" ]]
+    then 
+        cd console-setup-${pkgver} 
+    elif [[ -d "${srcdir}/work" ]]
+    then
+        cd work
+    else
+	echo "Source directory not found.".
+	exit 1
+    fi
+
+
+    if [[ ${?} != 0 ]]
+    then
+        cd console-setup-${pkgver}
+    fi
+
+    install -d ${pkgdir}/usr/bin/
+    install -m755 Keyboard/ckbcomp ${pkgdir}/usr/bin/
+}
