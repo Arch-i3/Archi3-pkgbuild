@@ -2,7 +2,7 @@
 # Comtributor: Bruno Pagani <archange@archlinux.org>
 
 pkgbase=materia-kde
-pkgname=(materia-kde-archi3 kvantum-theme-materia)
+pkgname=(materia-kde kvantum-theme-materia)
 pkgver=20220823
 pkgrel=3
 pkgdesc="Materia theme for KDE Plasma 5"
