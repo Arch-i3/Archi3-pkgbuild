@@ -1,7 +1,7 @@
 # Maintainer:
 # Comtributor: Bruno Pagani <archange@archlinux.org>
 
-pkgbase=materia-kde
+pkgbase=materia-kde-archi3
 pkgname=(materia-kde kvantum-theme-materia)
 pkgver=20220823
 pkgrel=3
