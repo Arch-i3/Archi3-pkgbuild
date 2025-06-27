@@ -11,7 +11,7 @@ url="https://github.com/Arch-i3/materia-kde"
 license=(GPL3)
 options=(!strip)
 source=(${url}/archive/${pkgver}/${pkgbase}-${pkgver}.tar.gz)
-sha256sums=('5cd4be7ff1eb4bb04acca3257c76c2bce7ac14ca052a574e9f14166fe01bbdfb')
+sha256sums=('2731ffbf22e6fa4afa321fd677d3981c9a3851b9bca1e65d2439e6f3f6b735bf')
 
 package_materia-kde() {
     depends=('qt5-graphicaleffects' 'qt5-quickcontrols2')
