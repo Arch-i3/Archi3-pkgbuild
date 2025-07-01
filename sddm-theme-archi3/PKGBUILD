@@ -14,5 +14,5 @@ md5sums=('6f4f99b27a58f5e9d0788001e859a125')
 
 package() {
   mkdir -p "${pkgdir}/usr/share/sddm/themes"
-  cp -r "${srcdir}/sddm-sugar-dark-${pkgver}" "${pkgdir}/usr/share/sddm/themes/sugar-dark/"
+  cp -r "${srcdir}/sddm-theme-archi3-${pkgver}" "${pkgdir}/usr/share/sddm/themes/archi3/"
 }
