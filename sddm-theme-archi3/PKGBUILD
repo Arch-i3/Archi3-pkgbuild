@@ -1,7 +1,7 @@
 # Maintainer: peeweep <peeweep at 0x0 dot ee>
 
 pkgname=sddm-theme-archi3
-pkgver=1.2
+pkgver=1
 pkgrel=1
 pkgdesc="The sweetest dark theme around for SDDM, the Simple Desktop Display Manager."
 arch=('any')
