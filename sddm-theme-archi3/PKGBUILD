@@ -1,19 +1,16 @@
-# Maintainer: peeweep <peeweep at 0x0 dot ee>
-# Maintainer: Sándor Kakuk
-
+# Maintainer: Saját Neved <email@example.com>
 pkgname=sddm-theme-archi3
-pkgver=2
+pkgver=1.0
 pkgrel=1
-pkgdesc="The sweetest dark theme around for SDDM, the Simple Desktop Display Manager."
+pkgdesc="Minimal SDDM theme with background and i3status bar"
 arch=('any')
-url="https://github.com/Arch-i3/sddm-theme-archi3"
-license=('GPL3')
-depends=('sddm')
-install=$pkgname.install
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('962bb7d2d82357c9ff3402df85c8d118')
+url="https://example.com"
+license=('GPL')
+depends=('sddm' 'qt6-declarative')
+source=('minimal-i3status')
+md5sums=('SKIP')
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/sddm/themes"
-  cp -r "${srcdir}/sddm-theme-archi3-${pkgver}" "${pkgdir}/usr/share/sddm/themes/archi3/"
+  install -d "$pkgdir/usr/share/sddm/themes/archi3"
+  cp -r archi3/* "$pkgdir/usr/share/sddm/themes/archi3/"
 }
