@@ -12,5 +12,5 @@ md5sums=('SKIP')
 
 package() {
   install -d "$pkgdir/usr/share/sddm/themes/archi3"
-  cp -r archi3/* "$pkgdir/usr/share/sddm/themes/archi3/"
+  cp -r * "$pkgdir/usr/share/sddm/themes/archi3/"
 }
