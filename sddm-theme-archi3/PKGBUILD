@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/Arch-i3/sddm-theme-archi3.git"
 license=('GPL')
 depends=('sddm' 'qt6-declarative')
-source=('sddm-theme-archi3')
+source=('https://github.com/Arch-i3/sddm-theme-archi3')
 md5sums=('SKIP')
 
 package() {
