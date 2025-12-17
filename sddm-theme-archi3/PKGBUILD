@@ -1,16 +1,26 @@
-# Maintainer: Saját Neved <email@example.com>
+# Maintainer: Te Neved <email@cim.hu>
 pkgname=sddm-theme-archi3
 pkgver=1.0
 pkgrel=1
-pkgdesc="Minimal SDDM theme with background and i3status bar"
+pkgdesc="Minimalista SDDM téma i3 stílusban"
 arch=('any')
-url="https://github.com/Arch-i3/sddm-theme-archi3.git"
+url="https://github.com/Arch-i3/sddm-theme-archi3" # Itt a repo címe!
 license=('GPL')
-depends=('sddm' 'qt6-declarative')
-source=('https://github.com/Arch-i3/sddm-theme-archi3')
-md5sums=('SKIP')
+depends=('sddm' 'qt5-quickcontrols2' 'qt5-graphicaleffects')
+source=('Main.qml'
+        'theme.conf'
+        'metadata.desktop'
+        'background.jpg')
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 package() {
-  install -d "$pkgdir/usr/share/sddm/themes/archi3"
-  cp -r * "$pkgdir/usr/share/sddm/themes/archi3/"
+    install -d "$pkgdir/usr/share/sddm/themes/archi3"
+    install -m644 Main.qml \
+                  theme.conf \
+                  metadata.desktop \
+                  background.jpg \
+                  "$pkgdir/usr/share/sddm/themes/archi3/"
 }
