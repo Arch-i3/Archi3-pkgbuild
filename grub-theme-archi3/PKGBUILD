@@ -1,32 +1,38 @@
-# Contributor: Felix Golatofski
-# Contributor: Mark Tompkins
-# Contributor: Sándor Kakuk
-
-_pkgname=grub-theme-archi3
-pkgname=grub-theme-archi3-git
-_gitname="archi3"
-gitname="grub-theme-archi3"
-pkgver=r38.a86b878
+# Maintainer: Te Neved <email@cim.hu>
+pkgname=grub-theme-archi3
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Archi3 - GRUB2 theme - GIT version"
+pkgdesc="Minimalista Arch Linux GRUB téma i3wm stílusban"
 arch=('any')
+url="https://github.com/Arch-i3/grub-theme-archi3" # Cseréld le a valós URL-re
 license=('GPL')
-depends=()
-optdepends=()
+depends=('grub')
+optdepends=('grub-customizer: GUI a GRUB beállításához')
 install="${pkgname}.install"
-url="https://github.com/Arch-i3/grub-theme-archi3"
-source=('git+https://github.com/Arch-i3/grub-theme-archi3')
-makedepends=('git')
-sha512sums=('SKIP')
-conflicts=("$_pkgname")
-provides=("$_pkgname=$pkgver")
+options=('!strip') # Témáknál felesleges a strip, és néha gondot okoz képeknél
 
-pkgver() {
-  cd ${srcdir}/${gitname}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+# Mivel a fájlok a git repóban (helyben) vannak, nem töltünk le semmit
+source=()
+sha256sums=()
 
 package() {
-  mkdir -p "${pkgdir}/boot/grub/themes/${_gitname}"
-  cp -TR "${srcdir}/${gitname}/theme" "${pkgdir}/boot/grub/themes/${_gitname}"
+    # Üzenet kiírása építés közben
+    msg2 "Téma fájlok másolása..."
+
+    # A $startdir a PKGBUILD mappája (a git repó gyökere)
+    cd "$startdir"
+
+    # Célkönyvtár létrehozása a szabványos helyen
+    install -d "$pkgdir/usr/share/grub/themes/archi3"
+
+    # A téma mappájának (archi3) tartalmát átmásoljuk a célhelyre
+    # Feltételezzük, hogy a mappában van: theme.txt, *.png, *.pf2
+    cp -r archi3/* "$pkgdir/usr/share/grub/themes/archi3/"
+
+    # Jogosultságok beállítása:
+    # Könyvtárak: 755 (rwxr-xr-x), Fájlok: 644 (rw-r--r--)
+    find "$pkgdir/usr/share/grub/themes/archi3" -type d -exec chmod 755 {} +
+    find "$pkgdir/usr/share/grub/themes/archi3" -type f -exec chmod 644 {} +
+    
+    msg2 "Kész."
 }
