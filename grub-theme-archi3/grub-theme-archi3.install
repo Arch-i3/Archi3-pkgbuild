@@ -1,1 +1,15 @@
+post_install() {
+    echo "--------------------------------------------------------"
+    echo "  A GRUB téma telepítve ide: /usr/share/grub/themes/archi3"
+    echo ""
+    echo "  Aktiváláshoz szerkeszd a /etc/default/grub fájlt:"
+    echo '  GRUB_THEME="/usr/share/grub/themes/archi3/theme.txt"'
+    echo ""
+    echo "  Majd frissítsd a GRUB-ot:"
+    echo "  sudo grub-mkconfig -o /boot/grub/grub.cfg"
+    echo "--------------------------------------------------------"
+}
 
+post_upgrade() {
+    post_install
+}
