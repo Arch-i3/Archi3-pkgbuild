@@ -4,7 +4,7 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Minimalista Arch Linux GRUB téma i3wm stílusban"
 arch=('any')
-url="https://github.com/Arch-i3/grub-theme-archi3" # Cseréld le a valós URL-re
+url="https://github.com/Arch-i3/grub-theme-archi3.git" # Cseréld le a valós URL-re
 license=('GPL')
 depends=('grub')
 optdepends=('grub-customizer: GUI a GRUB beállításához')
@@ -12,7 +12,7 @@ install="${pkgname}.install"
 options=('!strip') # Témáknál felesleges a strip, és néha gondot okoz képeknél
 
 # Mivel a fájlok a git repóban (helyben) vannak, nem töltünk le semmit
-source=()
+source=(https://github.com/Arch-i3/grub-theme-archi3.git)
 sha256sums=()
 
 package() {
