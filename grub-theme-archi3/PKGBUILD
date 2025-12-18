@@ -1,38 +1,23 @@
-# Maintainer: Te Neved <email@cim.hu>
+# Maintainer: Kabir Kwatra <kabir@kwatra.me>
+
 pkgname=grub-theme-archi3
-pkgver=1.0.0
+#_theme=archi3
+pkgver=r46.5822f7e
 pkgrel=1
-pkgdesc="Minimalista Arch Linux GRUB téma i3wm stílusban"
+pkgdesc="Archi3 GRUB theme"
+url='https://github.com/Arch-i3/grub-theme-archi3'
 arch=('any')
-url="https://github.com/Arch-i3/grub-theme-archi3.git" # Cseréld le a valós URL-re
 license=('GPL')
 depends=('grub')
-optdepends=('grub-customizer: GUI a GRUB beállításához')
-install="${pkgname}.install"
-options=('!strip') # Témáknál felesleges a strip, és néha gondot okoz képeknél
-
-# Mivel a fájlok a git repóban (helyben) vannak, nem töltünk le semmit
-source=(https://github.com/Arch-i3/grub-theme-archi3.git)
-sha256sums=()
-
+makedepends=('git')
+install=${pkgname}.install
+source=("${pkgname}"::"git+https://github.com/Arch-i3/grub-theme-archi3")
+md5sums=('SKIP')
+pkgver() {
+  cd "${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 package() {
-    # Üzenet kiírása építés közben
-    msg2 "Téma fájlok másolása..."
-
-    # A $startdir a PKGBUILD mappája (a git repó gyökere)
-    cd "$startdir"
-
-    # Célkönyvtár létrehozása a szabványos helyen
-    install -d "$pkgdir/usr/share/grub/themes/archi3"
-
-    # A téma mappájának (archi3) tartalmát átmásoljuk a célhelyre
-    # Feltételezzük, hogy a mappában van: theme.txt, *.png, *.pf2
-    cp -r archi3/* "$pkgdir/usr/share/grub/themes/archi3/"
-
-    # Jogosultságok beállítása:
-    # Könyvtárak: 755 (rwxr-xr-x), Fájlok: 644 (rw-r--r--)
-    find "$pkgdir/usr/share/grub/themes/archi3" -type d -exec chmod 755 {} +
-    find "$pkgdir/usr/share/grub/themes/archi3" -type f -exec chmod 644 {} +
-    
-    msg2 "Kész."
+  install -dm 755 "${pkgdir}/usr/share/grub/themes/archi3"
+  cp -rf --no-preserve=ownership "${pkgname}/archi3" "${pkgdir}/usr/share/grub/themes/"
 }
